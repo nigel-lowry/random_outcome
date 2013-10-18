@@ -30,6 +30,7 @@ describe Simulator do
 
     it { should give_the_outcome(:a).with_the_percentage(0.1) }
     it { should give_the_outcome(:b).with_the_percentage(0.9) }
+    it { should give_the_outcome(:c).with_the_percentage(0.0) }
 
   end
 end
