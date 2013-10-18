@@ -44,4 +44,16 @@ describe Simulator do
     it { should give_the_outcome(:A).with_the_percentage(0.4) }
     it { should give_the_outcome(:B).with_the_percentage(0.6) }
   end
+
+  context "p(A) = 10%, p(B) = 20%, p(C) = 70%" do
+    before :all do
+      @simulator = Simulator.new(A: 0.1, B: 0.2, C: 0.7)
+    end
+
+    subject { @simulator }
+
+    it { should give_the_outcome(:A).with_the_percentage(0.1) }
+    it { should give_the_outcome(:B).with_the_percentage(0.2) }
+    it { should give_the_outcome(:C).with_the_percentage(0.7) }
+  end
 end
