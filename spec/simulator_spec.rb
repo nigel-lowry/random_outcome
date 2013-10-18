@@ -15,7 +15,7 @@ describe Simulator do
     RSpec::Matchers.define :give_the_outcome do |outcome|
       match do |actual|
         outcome_count = 0
-        times = 1_000_000
+        times = 10_000
         times.times do
           outcome_count += 1 if actual.outcome == outcome
         end
