@@ -1,4 +1,6 @@
 class Simulator # TODO rename file
+  attr_reader :outcome_to_probability
+
   def initialize outcome_to_probability
     @outcome_to_probability = outcome_to_probability
   end

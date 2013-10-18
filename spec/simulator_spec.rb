@@ -12,24 +12,28 @@ describe Simulator do
       @simulator.outcome.should be
     end
 
-    it "should return A roughly 10% of the time" do
-      a_count = 0
-      times = 1_000
-      times.times do
-        a_count += 1 if @simulator.outcome == :a
+    RSpec::Matchers.define :give_the_outcome do |outcome|
+      match do |actual|
+        outcome_count = 0
+        times = 1_000_000
+        times.times do
+          outcome_count += 1 if actual.outcome == outcome
+        end
+        outcome_percentage = outcome_count / times.to_f
+        outcome_percentage.should be_within(0.01).of(@percent)
       end
-      a_count_percentage = a_count / times.to_f
-      a_count_percentage.should be_within(0.01).of(0.1)
+
+      chain :with_the_percentage do |percent|
+        @percent = percent
+      end
+    end
+
+    it "should return A roughly 10% of the time" do
+      @simulator.should give_the_outcome(:a).with_the_percentage(0.1)
     end
 
     it "should happen B roughly 90% of the time" do
-      b_count = 0
-      times = 1_000
-      times.times do
-        b_count += 1 if @simulator.outcome == :b
-      end
-      b_count_percentage = b_count / times.to_f
-      b_count_percentage.should be_within(0.01).of(0.9)
+      @simulator.should give_the_outcome(:b).with_the_percentage(0.9)
     end
 
   end
