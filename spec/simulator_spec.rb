@@ -28,13 +28,8 @@ describe Simulator do
       end
     end
 
-    it "should return A roughly 10% of the time" do
-      @simulator.should give_the_outcome(:a).with_the_percentage(0.1)
-    end
-
-    it "should happen B roughly 90% of the time" do
-      @simulator.should give_the_outcome(:b).with_the_percentage(0.9)
-    end
+    it { should give_the_outcome(:a).with_the_percentage(0.1) }
+    it { should give_the_outcome(:b).with_the_percentage(0.9) }
 
   end
 end
