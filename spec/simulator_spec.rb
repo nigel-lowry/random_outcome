@@ -18,7 +18,8 @@ describe Simulator do
       times.times do
         a_count += 1 if @simulator.outcome == :a
       end
-      a_count.should eq 100
+      a_count_percentage = a_count / times.to_f
+      a_count_percentage.should be_within(0.01).of(0.1)
     end
 
     it "should happen B roughly 90% of the time" do
@@ -27,7 +28,8 @@ describe Simulator do
       times.times do
         b_count += 1 if @simulator.outcome == :b
       end
-      b_count.should eq 900
+      b_count_percentage = b_count / times.to_f
+      b_count_percentage.should be_within(0.01).of(0.9)
     end
 
   end
