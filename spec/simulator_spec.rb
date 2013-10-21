@@ -25,10 +25,6 @@ describe Simulator do
 
     subject { @simulator }
 
-    xit "should return A or B" do
-      @simulator.outcome.should be
-    end
-
     it { should give_the_outcome(:A).with_the_percentage(0.1) }
     it { should give_the_outcome(:B).with_the_percentage(0.9) }
     it { should give_the_outcome(:C).with_the_percentage(0.0) }
