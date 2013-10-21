@@ -27,10 +27,6 @@ class Simulator
 
 private
 
-  def random_float_including_zero_and_excluding_one
-    rand
-  end
-
   def raise_if_only_have_one_outcome(outcome_to_probability)
     raise "only have one outcome" unless outcome_to_probability.many?
   end
@@ -41,5 +37,9 @@ private
 
   def raise_if_have_impossible_outcome(outcome_to_probability)
     raise "have an impossible outcome" if outcome_to_probability.has_value? 0.0
+  end
+
+  def random_float_including_zero_and_excluding_one
+    rand
   end
 end
