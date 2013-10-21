@@ -1,27 +1,27 @@
 RSpec::Matchers.define :give_the_outcome do |outcome|
   match do |actual|
     outcome_count = 0
-    trials = 10_000
-    trials.times do
+
+    10_000.times do
       outcome_count += 1 if actual.outcome == outcome
     end
-    outcome_percentage = outcome_count / trials.to_f
-    outcome_percentage.should be_within(0.01).of(@percent)
+
+    (outcome_count / 10_000.to_f).should be_within(0.01).of(@probability)
   end
 
-  chain :with_the_percentage do |percent|
-    @percent = percent
+  chain :with_the_probability do |probability|
+    @probability = probability
   end
 
   failure_message_for_should do |actual|
-    "expected that #{outcome} would occur with a probability of #{@percent}"
+    "expected that #{outcome} would occur with a probability of #{@probability}"
   end
 
   failure_message_for_should_not do |actual|
-    "expected that #{outcome} would not occur with a probability of #{@percent}"
+    "expected that #{outcome} would not occur with a probability of #{@probability}"
   end
 
   description do
-    "occur with a probability of #{@percent}"
+    "occur with a probability of #{@probability}"
   end
 end
