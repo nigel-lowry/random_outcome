@@ -1,7 +1,6 @@
 require 'active_support/all'
 
 class Simulator # TODO rename file
-  attr_reader :outcome_to_probability
 
   def initialize outcome_to_probability
     raise_if_only_have_one_outcome(outcome_to_probability)
