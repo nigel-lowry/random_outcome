@@ -1,6 +1,6 @@
 require 'active_support/all'
 
-class Simulator # TODO rename file
+class Simulator
 
   def initialize outcome_to_probability
     raise_if_only_have_one_outcome(outcome_to_probability)
