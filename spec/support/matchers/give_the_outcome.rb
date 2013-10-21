@@ -12,4 +12,16 @@ RSpec::Matchers.define :give_the_outcome do |outcome|
   chain :with_the_percentage do |percent|
     @percent = percent
   end
+
+  failure_message_for_should do |actual|
+    "expected that #{outcome} would occur with a probability of #{@percent}"
+  end
+
+  failure_message_for_should_not do |actual|
+    "expected that #{outcome} would not occur with a probability of #{@percent}"
+  end
+
+  description do
+    "occur with a probability of #{@percent}"
+  end
 end
