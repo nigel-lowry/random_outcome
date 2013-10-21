@@ -1,7 +1,7 @@
 RSpec::Matchers.define :give_the_outcome do |outcome|
   match do |actual|
     outcome_count = 0
-    trial_count = 10_000
+    trial_count = 100_000
 
     trial_count.times do
       outcome_count += 1 if actual.outcome == outcome
