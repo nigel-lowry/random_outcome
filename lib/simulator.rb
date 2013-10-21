@@ -14,11 +14,11 @@ class Simulator
 
     lower_bound = 0.0
 
-    @outcome_to_probability.each do |key, value|
-      upper_bound = lower_bound + value
+    @outcome_to_probability.each do |outcome, probability|
+      upper_bound = lower_bound + probability
 
       if num.in? lower_bound...upper_bound
-        return key
+        return outcome
       else
         lower_bound = upper_bound
       end
