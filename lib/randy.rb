@@ -1,3 +1,5 @@
+require 'active_support/all'
+
 class Simulator # TODO rename file
   attr_reader :outcome_to_probability
 
@@ -26,10 +28,10 @@ class Simulator # TODO rename file
 private
 
   def raise_if_only_have_one_outcome(outcome_to_probability)
-    raise "only have one outcome" if outcome_to_probability.size == 1
+    raise "only have one outcome" unless outcome_to_probability.many?
   end
 
   def raise_if_probabilities_total_isnt_one(outcome_to_probability)
-    raise "probabilities don't total one" unless outcome_to_probability.values.reduce(:+) == 1.0
+    raise "probabilities don't total one" unless outcome_to_probability.values.sum == 1.0
   end
 end
