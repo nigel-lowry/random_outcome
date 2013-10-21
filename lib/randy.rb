@@ -3,7 +3,7 @@ class Simulator # TODO rename file
 
   def initialize outcome_to_probability
     raise_if_only_have_one_outcome(outcome_to_probability)
-    raise "probabilities don't total one" unless outcome_to_probability.values.reduce(:+) == 1.0
+    raise_if_probabilities_total_isnt_one(outcome_to_probability)
     @outcome_to_probability = outcome_to_probability
   end
 
@@ -27,5 +27,9 @@ private
 
   def raise_if_only_have_one_outcome(outcome_to_probability)
     raise "only have one outcome" if outcome_to_probability.size == 1
+  end
+
+  def raise_if_probabilities_total_isnt_one(outcome_to_probability)
+    raise "probabilities don't total one" unless outcome_to_probability.values.reduce(:+) == 1.0
   end
 end
