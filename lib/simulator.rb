@@ -11,18 +11,11 @@ class Simulator
 
   def outcome
     num = rand
+    lower_bound = 0.0
 
-    first_key = @outcome_to_probability.keys[0]
-    second_key = @outcome_to_probability.keys[1]
-    third_key = @outcome_to_probability.keys[2]
-
-    case num
-      when 0...@outcome_to_probability[first_key]
-        first_key
-      when @outcome_to_probability[first_key]...(@outcome_to_probability[first_key] + @outcome_to_probability[second_key])
-        second_key
-      when (@outcome_to_probability[first_key] + @outcome_to_probability[second_key])..(@outcome_to_probability[first_key] + @outcome_to_probability[second_key] + @outcome_to_probability[third_key])
-        third_key
+    @outcome_to_probability.each do |key, value|
+      return key if num.in?(lower_bound...(lower_bound + value))
+      lower_bound += value
     end
   end
 
