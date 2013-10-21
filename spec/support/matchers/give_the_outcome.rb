@@ -1,12 +1,13 @@
 RSpec::Matchers.define :give_the_outcome do |outcome|
   match do |actual|
     outcome_count = 0
+    trial_count = 10_000
 
-    10_000.times do
+    trial_count.times do
       outcome_count += 1 if actual.outcome == outcome
     end
 
-    (outcome_count / 10_000.to_f).should be_within(0.01).of(@probability)
+    (outcome_count / trial_count.to_f).should be_within(0.01).of(@probability)
   end
 
   chain :with_the_probability do |probability|
