@@ -2,6 +2,7 @@ class Simulator # TODO rename file
   attr_reader :outcome_to_probability
 
   def initialize outcome_to_probability
+    raise "only have one outcome" if outcome_to_probability.size == 1
     @outcome_to_probability = outcome_to_probability
   end
 
