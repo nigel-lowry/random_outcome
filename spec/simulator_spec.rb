@@ -57,6 +57,12 @@ describe Simulator do
     it { should give_the_outcome(:C).with_the_percentage(0.7) }
   end
 
+  context "with no outcomes" do
+    it "will raise error" do
+      expect { Simulator.new({}) }.to raise_error
+    end
+  end
+
   context "with only one outcome" do
     it "will raise error" do
       expect { Simulator.new(A: 1.0) }.to raise_error
