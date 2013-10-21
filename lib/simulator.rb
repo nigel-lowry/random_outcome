@@ -11,11 +11,17 @@ class Simulator
 
   def outcome
     num = random_float_including_zero_and_excluding_one
+
     lower_bound = 0.0
 
     @outcome_to_probability.each do |key, value|
-      return key if num.in?(lower_bound...(lower_bound + value))
-      lower_bound += value
+      upper_bound = lower_bound + value
+
+      if num.in? lower_bound...upper_bound
+        return key
+      else
+        lower_bound = upper_bound
+      end
     end
   end
 
