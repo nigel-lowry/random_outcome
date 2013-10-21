@@ -10,7 +10,7 @@ class Simulator
   end
 
   def outcome
-    num = rand
+    num = random_float_including_zero_and_excluding_one
     lower_bound = 0.0
 
     @outcome_to_probability.each do |key, value|
@@ -20,6 +20,10 @@ class Simulator
   end
 
 private
+
+  def random_float_including_zero_and_excluding_one
+    rand
+  end
 
   def raise_if_only_have_one_outcome(outcome_to_probability)
     raise "only have one outcome" unless outcome_to_probability.many?
