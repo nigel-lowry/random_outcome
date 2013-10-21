@@ -15,12 +15,13 @@ class Simulator
     second_key = @outcome_to_probability.keys[1]
     third_key = @outcome_to_probability.keys[2]
 
-    if num < @outcome_to_probability[first_key]
-      first_key
-    elsif num < @outcome_to_probability[first_key] + @outcome_to_probability[second_key]
-      second_key
-    elsif num < @outcome_to_probability[first_key] + @outcome_to_probability[second_key] + @outcome_to_probability[third_key]
-      third_key
+    case num
+      when 0...@outcome_to_probability[first_key]
+        first_key
+      when @outcome_to_probability[first_key]...(@outcome_to_probability[first_key] + @outcome_to_probability[second_key])
+        second_key
+      when (@outcome_to_probability[first_key] + @outcome_to_probability[second_key])..(@outcome_to_probability[first_key] + @outcome_to_probability[second_key] + @outcome_to_probability[third_key])
+        third_key
     end
   end
 
