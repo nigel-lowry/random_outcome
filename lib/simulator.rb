@@ -5,6 +5,7 @@ class Simulator
   def initialize outcome_to_probability
     raise_if_only_have_one_outcome(outcome_to_probability)
     raise_if_probabilities_total_isnt_one(outcome_to_probability)
+    raise_if_have_impossible_outcome(outcome_to_probability)
     @outcome_to_probability = outcome_to_probability
   end
 
@@ -33,5 +34,9 @@ private
 
   def raise_if_probabilities_total_isnt_one(outcome_to_probability)
     raise "probabilities don't total one" unless outcome_to_probability.values.sum == 1.0
+  end
+
+  def raise_if_have_impossible_outcome(outcome_to_probability)
+    raise "have an impossible outcome" if outcome_to_probability.has_value? 0.0
   end
 end

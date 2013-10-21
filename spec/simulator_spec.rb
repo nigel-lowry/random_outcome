@@ -76,4 +76,10 @@ describe Simulator do
       expect { Simulator.new(A: 0.1, B: 0.91) }.to raise_error
     end
   end
+
+  context "with an impossible event" do
+    it "will raise error" do
+      expect { Simulator.new(A: 0.1, B: 0.9, C: 0.0) }.to raise_error
+    end
+  end
 end
