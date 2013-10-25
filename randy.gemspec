@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
     "README.rdoc",
     "Rakefile",
     "lib/simulator.rb",
+    "randy.gemspec",
     "spec/simulator_spec.rb",
     "spec/spec_helper.rb",
     "spec/support/matchers/give_the_outcome.rb"
