@@ -17,8 +17,8 @@ Jeweler::Tasks.new do |gem|
   gem.name = "randy"
   gem.homepage = "http://github.com/nigel-lowry/randy"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{Small gem for generating outcomes with specified probabilities}
+  gem.description = %Q{Generates outcomes with specified probabilities. Uses the wheel of fortune method.}
   gem.email = "nigel-lowry@ultra.eclipse.co.uk"
   gem.authors = ["Nigel Lowry"]
   # dependencies defined in Gemfile
