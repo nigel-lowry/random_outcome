@@ -6,12 +6,12 @@ class Simulator
     raise_if_only_have_one_outcome outcome_to_probability
     raise_if_probabilities_total_isnt_one outcome_to_probability
     raise_if_have_any_impossible_outcomes outcome_to_probability
-    @random_to_outcome = random_to_outcome outcome_to_probability
+    @probability_range_to_outcome = probability_range_to_outcome outcome_to_probability
   end
 
   def outcome
     num = random_float_including_zero_and_excluding_one
-    @random_to_outcome.detect {|probability_range, _| num.in? probability_range }.last
+    @probability_range_to_outcome.detect {|probability_range, _| num.in? probability_range }.last
   end
 
 private
@@ -32,7 +32,7 @@ private
     rand
   end
 
-  def random_to_outcome outcome_to_probability
+  def probability_range_to_outcome outcome_to_probability
     range_to_outcome = {}
     lower_bound = 0.0
 
