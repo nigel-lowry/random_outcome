@@ -11,12 +11,7 @@ class Simulator
 
   def outcome
     num = random_float_including_zero_and_excluding_one
-
-    range = @random_to_outcome.detect do |probability, outcome|
-      num.in? probability
-    end
-
-    range.last
+    @random_to_outcome.detect {|probability_range, _| num.in? probability_range }.last
   end
 
 private
