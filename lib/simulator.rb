@@ -6,21 +6,15 @@ class Simulator
     raise_if_only_have_one_outcome(outcome_to_probability)
     raise_if_probabilities_total_isnt_one(outcome_to_probability)
     raise_if_have_impossible_outcome(outcome_to_probability)
-    @outcome_to_probability = outcome_to_probability
+    @random_to_outcome = random_to_outcome outcome_to_probability
   end
 
   def outcome
     num = random_float_including_zero_and_excluding_one
 
-    lower_bound = 0.0
-
-    @outcome_to_probability.each do |outcome, probability|
-      upper_bound = lower_bound + probability
-
-      if num.in? lower_bound...upper_bound
+    @random_to_outcome.each do |probability, outcome|
+      if num.in? probability
         return outcome
-      else
-        lower_bound = upper_bound
       end
     end
   end
@@ -41,5 +35,19 @@ private
 
   def random_float_including_zero_and_excluding_one
     rand
+  end
+
+  def random_to_outcome(outcome_to_probability)
+    # range to outcome
+    lower_bound = 0.0
+    new_map = {}
+
+    outcome_to_probability.each do |outcome, probability|
+      upper_bound = lower_bound + probability
+      new_map.store lower_bound...upper_bound, outcome
+      lower_bound = upper_bound
+    end
+
+    new_map
   end
 end
