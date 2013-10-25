@@ -3,9 +3,9 @@ require 'active_support/all'
 class Simulator
 
   def initialize outcome_to_probability
-    raise_if_only_have_one_outcome(outcome_to_probability)
-    raise_if_probabilities_total_isnt_one(outcome_to_probability)
-    raise_if_have_any_impossible_outcomes(outcome_to_probability)
+    raise_if_only_have_one_outcome outcome_to_probability
+    raise_if_probabilities_total_isnt_one outcome_to_probability
+    raise_if_have_any_impossible_outcomes outcome_to_probability
     @random_to_outcome = random_to_outcome outcome_to_probability
   end
 
@@ -16,15 +16,15 @@ class Simulator
 
 private
 
-  def raise_if_only_have_one_outcome(outcome_to_probability)
+  def raise_if_only_have_one_outcome outcome_to_probability
     raise "only have one outcome" unless outcome_to_probability.many?
   end
 
-  def raise_if_probabilities_total_isnt_one(outcome_to_probability)
+  def raise_if_probabilities_total_isnt_one outcome_to_probability
     raise "probabilities don't total one" unless outcome_to_probability.values.sum == 1.0
   end
 
-  def raise_if_have_any_impossible_outcomes(outcome_to_probability)
+  def raise_if_have_any_impossible_outcomes outcome_to_probability
     raise "have an impossible outcome" if outcome_to_probability.has_value? 0.0
   end
 
@@ -32,7 +32,7 @@ private
     rand
   end
 
-  def random_to_outcome(outcome_to_probability)
+  def random_to_outcome outcome_to_probability
     range_to_outcome = {}
     lower_bound = 0.0
 
