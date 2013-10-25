@@ -1,7 +1,14 @@
 require 'active_support/all'
 
+# Generates outcomes with specified probabilities
 class Simulator
 
+  # creates a new Simulator which will return the desired outcomes with the given probability
+  # @param outcome_to_probability [Hash<Symbol, Number>] hash of outcomes to their probability (represented as
+  #   numbers between zero and one)
+  # @note raises errors if there is only one possible outcome (why bother using this if there's only one
+  #   outcome?), if the probabilities don't total one (use Rationals if this proves problematic with rounding) or
+  #   if any of the outcomes are impossible (why include them if they can never happen?)
   def initialize outcome_to_probability
     raise_if_only_have_one_outcome outcome_to_probability
     raise_if_probabilities_total_isnt_one outcome_to_probability
@@ -9,6 +16,8 @@ class Simulator
     @probability_range_to_outcome = probability_range_to_outcome outcome_to_probability
   end
 
+  # generate an outcome with the initialised probabilities
+  # @return [Symbol] symbol for outcome
   def outcome
     num = random_float_including_zero_and_excluding_one # don't inline
     @probability_range_to_outcome.detect {|probability_range, _| num.in? probability_range }.last
