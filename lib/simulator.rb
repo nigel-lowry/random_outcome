@@ -12,11 +12,11 @@ class Simulator
   def outcome
     num = random_float_including_zero_and_excluding_one
 
-    @random_to_outcome.each do |probability, outcome|
-      if num.in? probability
-        return outcome
-      end
+    range = @random_to_outcome.keys.detect do |probability|
+      num.in? probability
     end
+
+    @random_to_outcome.fetch range
   end
 
 private
