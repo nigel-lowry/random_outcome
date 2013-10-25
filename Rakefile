@@ -14,8 +14,8 @@ require 'rake'
 require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
-  gem.name = "randy"
-  gem.homepage = "http://github.com/nigel-lowry/randy"
+  gem.name = "random_outcome"
+  gem.homepage = "http://github.com/nigel-lowry/random_outcome"
   gem.license = "MIT"
   gem.summary = %Q{Small Ruby gem for generating outcomes with specified probabilities}
   gem.description = %Q{Generates outcomes with specified probabilities which could be useful for gaming. Uses the wheel of fortune method.}
