@@ -49,6 +49,18 @@ describe Simulator do
     end
   end
 
+  context "with any probabilities less than 0.0" do
+    it "will raise error" do
+      expect { Simulator.new(A: 0.9, B: 0.2, C: -0.1) }.to raise_error
+    end
+  end
+
+  context "with any probabilities greater than or equal to 1.0" do
+    it "will raise error" do
+      expect { Simulator.new(A: 1.1, B: 0.1, C: -0.2) }.to raise_error
+    end
+  end
+
   context "with probabilities summing to less than 1.0" do
     it "will raise error" do
       expect { Simulator.new(A: 0.1, B: 0.89) }.to raise_error
