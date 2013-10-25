@@ -10,7 +10,7 @@ class Simulator
   end
 
   def outcome
-    num = random_float_including_zero_and_excluding_one
+    num = random_float_including_zero_and_excluding_one # don't inline
     @probability_range_to_outcome.detect {|probability_range, _| num.in? probability_range }.last
   end
 
