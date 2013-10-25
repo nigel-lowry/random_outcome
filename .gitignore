@@ -30,6 +30,9 @@ pkg
 #
 #.DS_Store
 
+# For RubyMine
+.idea/
+
 # For TextMate
 #*.tmproj
 #tmtags
