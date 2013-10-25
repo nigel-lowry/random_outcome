@@ -33,9 +33,8 @@ private
   end
 
   def random_to_outcome(outcome_to_probability)
-    # range to outcome
-    lower_bound = 0.0
     new_map = {}
+    lower_bound = 0.0
 
     outcome_to_probability.each do |outcome, probability|
       upper_bound = lower_bound + probability
