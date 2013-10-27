@@ -10,7 +10,7 @@ class Simulator
   #   outcome?), if the probabilities don't total one (use Rationals if this proves problematic with rounding) or
   #   if any of the outcomes are impossible (why include them if they can never happen?)
   def initialize outcome_to_probability
-    raise_if_only_have_one_outcome outcome_to_probability
+    raise_if_dont_have_many_outcomes outcome_to_probability
     raise_if_probabilities_total_isnt_one outcome_to_probability
     raise_if_have_any_impossible_outcomes outcome_to_probability
     raise_if_have_any_negative_probabilities outcome_to_probability
@@ -26,8 +26,8 @@ class Simulator
 
 private
 
-  def raise_if_only_have_one_outcome outcome_to_probability
-    raise "only have one outcome" unless outcome_to_probability.many?
+  def raise_if_dont_have_many_outcomes outcome_to_probability
+    raise "needs many outcomes" unless outcome_to_probability.many?
   end
 
   def raise_if_probabilities_total_isnt_one outcome_to_probability
