@@ -7,18 +7,18 @@ RSpec::Matchers.define :give_the_outcome do |outcome|
       outcome_count += 1 if actual.outcome == outcome
     end
 
-    (outcome_count / trial_count.to_f).should be_within(0.01).of(@probability)
+    expect(outcome_count / trial_count.to_f).to be_within(0.01).of(@probability)
   end
 
   chain :with_the_probability do |probability|
     @probability = probability
   end
 
-  failure_message_for_should do |actual|
+  failure_message do |actual|
     "expected that #{outcome} would occur with a probability of #{@probability}"
   end
 
-  failure_message_for_should_not do |actual|
+  failure_message_when_negated do |actual|
     "expected that #{outcome} would not occur with a probability of #{@probability}"
   end
 
