@@ -1,3 +1,4 @@
+require 'spec_helper'
 require 'simulator'
 require 'support/matchers/give_the_outcome'
 
