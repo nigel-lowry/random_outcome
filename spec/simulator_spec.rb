@@ -6,24 +6,24 @@ RSpec.describe 'Simulator' do
   context 'p(A) = 10%, p(B) = 90%' do
     subject { Simulator.new(A: 0.1, B: 0.9) }
 
-    it { is_expected.to give_the_outcome(:A).with_the_probability(0.1) }
-    it { is_expected.to give_the_outcome(:B).with_the_probability(0.9) }
-    it { is_expected.to give_the_outcome(:C).with_the_probability(0.0) }
+    it { should give_the_outcome(:A).with_the_probability(0.1) }
+    it { should give_the_outcome(:B).with_the_probability(0.9) }
+    it { should give_the_outcome(:C).with_the_probability(0.0) }
   end
 
   context 'p(A) = 40%, p(B) = 60%' do
     subject { Simulator.new(A: 0.4, B: 0.6) }
 
-    it { is_expected.to give_the_outcome(:A).with_the_probability(0.4) }
-    it { is_expected.to give_the_outcome(:B).with_the_probability(0.6) }
+    it { should give_the_outcome(:A).with_the_probability(0.4) }
+    it { should give_the_outcome(:B).with_the_probability(0.6) }
   end
 
   context 'p(A) = 10%, p(B) = 20%, p(C) = 70%' do
     subject { Simulator.new(A: 0.1, B: 0.2, C: 0.7) }
 
-    it { is_expected.to give_the_outcome(:A).with_the_probability(0.1) }
-    it { is_expected.to give_the_outcome(:B).with_the_probability(0.2) }
-    it { is_expected.to give_the_outcome(:C).with_the_probability(0.7) }
+    it { should give_the_outcome(:A).with_the_probability(0.1) }
+    it { should give_the_outcome(:B).with_the_probability(0.2) }
+    it { should give_the_outcome(:C).with_the_probability(0.7) }
   end
 
   context 'with no outcomes' do
