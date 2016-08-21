@@ -27,7 +27,7 @@ class Simulator
 private
 
   def raise_if_dont_have_many_outcomes outcome_to_probability
-    raise "needs many outcomes" unless outcome_to_probability.many?
+    raise 'needs many outcomes' unless outcome_to_probability.many?
   end
 
   def raise_if_probabilities_total_isnt_one outcome_to_probability
@@ -35,11 +35,11 @@ private
   end
 
   def raise_if_have_any_impossible_outcomes outcome_to_probability
-    raise "have an impossible outcome" if outcome_to_probability.has_value? 0.0
+    raise 'have an impossible outcome' if outcome_to_probability.has_value? 0.0
   end
 
   def raise_if_have_any_negative_probabilities outcome_to_probability
-    raise "have negative probability" if outcome_to_probability.values.any? {|probability| probability < 0.0 }
+    raise 'have negative probability' if outcome_to_probability.values.any? {|probability| probability < 0.0 }
   end
 
   def random_float_including_zero_and_excluding_one
