@@ -14,11 +14,11 @@ RSpec::Matchers.define :give_the_outcome do |outcome|
     @probability = probability
   end
 
-  failure_message do |actual|
+  failure_message do |_|
     "expected that #{outcome} would occur with a probability of #{@probability}"
   end
 
-  failure_message_when_negated do |actual|
+  failure_message_when_negated do |_|
     "expected that #{outcome} would not occur with a probability of #{@probability}"
   end
 
