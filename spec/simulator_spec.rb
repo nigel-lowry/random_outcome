@@ -1,6 +1,7 @@
-require 'spec_helper'
+require 'simulator'
+require 'support/matchers/give_the_outcome'
 
-describe Simulator do
+RSpec.describe 'Simulator' do
 
   context "p(A) = 10%, p(B) = 90%" do
     subject { Simulator.new(A: 0.1, B: 0.9) }
