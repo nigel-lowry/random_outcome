@@ -27,43 +27,43 @@ describe Simulator do
 
   context "with no outcomes" do
     it "will raise error" do
-      expect { Simulator.new({}) }.to raise_error
+      expect { Simulator.new({}) }.to raise_error 'needs many outcomes'
     end
   end
 
   context "with only one outcome" do
     it "will raise error" do
-      expect { Simulator.new(A: 1.0) }.to raise_error
+      expect { Simulator.new(A: 1.0) }.to raise_error 'needs many outcomes'
     end
   end
 
   context "with any probabilities less than 0.0" do
     it "will raise error" do
-      expect { Simulator.new(A: 0.9, B: 0.2, C: -0.1) }.to raise_error
+      expect { Simulator.new(A: 0.9, B: 0.2, C: -0.1) }.to raise_error 'have negative probability'
     end
   end
 
   context "with any probabilities greater than or equal to 1.0" do
     it "will raise error" do
-      expect { Simulator.new(A: 1.1, B: 0.1, C: -0.2) }.to raise_error
+      expect { Simulator.new(A: 1.1, B: 0.1, C: -0.2) }.to raise_error "probabilities don't total one"
     end
   end
 
   context "with probabilities summing to less than 1.0" do
     it "will raise error" do
-      expect { Simulator.new(A: 0.1, B: 0.89) }.to raise_error
+      expect { Simulator.new(A: 0.1, B: 0.89) }.to raise_error "probabilities don't total one"
     end
   end
 
   context "with probabilities summing to more than 1.0" do
     it "will raise error" do
-      expect { Simulator.new(A: 0.1, B: 0.91) }.to raise_error
+      expect { Simulator.new(A: 0.1, B: 0.91) }.to raise_error "probabilities don't total one"
     end
   end
 
   context "with an impossible event" do
     it "will raise error" do
-      expect { Simulator.new(A: 0.1, B: 0.9, C: 0.0) }.to raise_error
+      expect { Simulator.new(A: 0.1, B: 0.9, C: 0.0) }.to raise_error 'have an impossible outcome'
     end
   end
 end
